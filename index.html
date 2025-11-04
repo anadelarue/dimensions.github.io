@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mrf-extractable" content="false">
+    <title>Do we build taller that before?</title>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+    <!-- Si también utilizamos el buscador debemos introducir las dos siguientes líneas: 
+        - <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
+        - <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css"/>
+    -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,800,900&amp;display=swap" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <section class="content">
+        <div class="mobile__filters--container">
+            <div class="mobile__filters--btn">Open filters</div>
+            <div class="mobile__filters hidden">
+                <div class="main__result">
+                    <p class="main__result--text">Madrid</p>
+                    <div class="main__result--triangle"></div>
+                </div>
+                <div class="dropdown__menu--container hidden">
+                    <ul class="dropdown__menu">
+                        <li class="dropdown__menu--item">Madrid</li>
+                        <li class="dropdown__menu--item">Barcelona</li>
+                        <li class="dropdown__menu--item">Valencia</li>
+                        <li class="dropdown__menu--item">Sevilla</li>
+                        <li class="dropdown__menu--item">Zaragoza</li>
+                        <li class="dropdown__menu--item">Málaga</li>
+                        <li class="dropdown__menu--item">Murcia</li>
+                        <li class="dropdown__menu--item">Palma</li>
+                        <li class="dropdown__menu--item">Las Palmas de Gran Canaria</li>
+                        <li class="dropdown__menu--item">Alicante</li>
+                        <li class="dropdown__menu--item">Córdoba</li>
+                        <li class="dropdown__menu--item">Valladolid</li>
+                        <li class="dropdown__menu--item">Vigo</li>
+                        <li class="dropdown__menu--item">Hospitalet de Llobregat</li>
+                        <li class="dropdown__menu--item">Gijón</li>
+                        <li class="dropdown__menu--item">La Coruña</li>
+                        <li class="dropdown__menu--item">Elche</li>
+                        <li class="dropdown__menu--item">Granada</li>
+                        <li class="dropdown__menu--item">Terrassa</li>
+                        <li class="dropdown__menu--item">Badalona</li>
+                        <li class="dropdown__menu--item">Sabadell</li>
+                        <li class="dropdown__menu--item">Oviedo</li>
+                        <li class="dropdown__menu--item">Cartagena</li>
+                        <li class="dropdown__menu--item">Móstoles</li>
+                        <li class="dropdown__menu--item">Jerez de la Frontera</li>
+                        <li class="dropdown__menu--item">Santa Cruz de Tenerife</li>
+                        <li class="dropdown__menu--item">Almería</li>
+                        <li class="dropdown__menu--item">Alcalá de Henares</li>
+                        <li class="dropdown__menu--item">Leganés</li>
+                        <li class="dropdown__menu--item">Fuenlabrada</li>
+                        <li class="dropdown__menu--item">Getafe</li>
+                        <li class="dropdown__menu--item">Castellón de la Plana</li>
+                        <li class="dropdown__menu--item">Burgos</li>
+                        <li class="dropdown__menu--item">Albacete</li>
+                        <li class="dropdown__menu--item">Santander</li>
+                        <li class="dropdown__menu--item">Alcorcón</li>
+                        <li class="dropdown__menu--item">San Cristóbal de La Laguna</li>
+                        <li class="dropdown__menu--item">Marbella</li>
+                        <li class="dropdown__menu--item">Logroño</li>
+                        <li class="dropdown__menu--item">Badajoz</li>
+                        <li class="dropdown__menu--item">Salamanca</li>
+                        <li class="dropdown__menu--item">Lleida</li>
+                        <li class="dropdown__menu--item">Huelva</li>
+                        <li class="dropdown__menu--item">Tarragona</li>
+                        <li class="dropdown__menu--item">Torrejón de Ardoz</li>
+                        <li class="dropdown__menu--item">Dos Hermanas</li>
+                        <li class="dropdown__menu--item">Parla</li>
+                        <li class="dropdown__menu--item">Mataró</li>
+                        <li class="dropdown__menu--item">Algeciras</li>
+                        <li class="dropdown__menu--item">León</li>
+                        <li class="dropdown__menu--item">Alcobendas</li>
+                        <li class="dropdown__menu--item">Santa Coloma de Gramenet</li>
+                        <li class="dropdown__menu--item">Jaén</li>
+                        <li class="dropdown__menu--item">Cádiz</li>
+                        <li class="dropdown__menu--item">Reus</li>
+                        <li class="dropdown__menu--item">Roquetas de Mar</li>
+                        <li class="dropdown__menu--item">Girona</li>
+                        <li class="dropdown__menu--item">Ourense</li>
+                        <li class="dropdown__menu--item">Telde</li>
+                        <li class="dropdown__menu--item">Rivas-Vaciamadrid</li>
+                    </ul>
+                </div>
+                <div class="checkBoxFilters">
+                    <p class="checkBoxFilters--text">Year of construction</p>
+                    <div class="mapCheckBoxes">
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="antes-40" value="first_checkbox" checked/> 
+                            Before 1940
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="40-60" value="first_checkbox" checked/> 
+                            Between 1940 and 1959
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="60-80" value="first_checkbox" checked/> 
+                            Between 1960 and 1979
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="80-00" value="first_checkbox" checked/> 
+                            Between 1980 and 1999
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="desde-2000" value="first_checkbox" checked/> 
+                            After 2000
+                        </label>            
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="map">
+            <div class="legend">
+                <div class="lengend__box">
+                    <p class="legend__box--title">Number of floors</p>
+                    <div class="legend__box--squares">
+                        <span class="legend__box--square--item square1"></span>
+                        <span class="legend__box--square--item square2"></span>
+                        <span class="legend__box--square--item square3"></span>
+                        <span class="legend__box--square--item square4"></span>
+                        <span class="legend__box--square--item square5"></span>
+                    </div>
+                    <div class="legend__box--numbers">
+                        <span class="legend__box--numbers--item">&lt 2</span>
+                        <span class="legend__box--numbers--item">2-4</span>
+                        <span class="legend__box--numbers--item">5-7</span>
+                        <span class="legend__box--numbers--item">7-9</span>
+                        <span class="legend__box--numbers--item">&gt 10</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="filters">
+                <div class="main__result">
+                    <p class="main__result--text">Madrid</p>
+                    <div class="main__result--triangle"></div>
+                </div>
+                <div class="dropdown__menu--container hidden">
+                    <ul class="dropdown__menu">
+                        <li class="dropdown__menu--item">Madrid</li>
+                        <li class="dropdown__menu--item">Barcelona</li>
+                        <li class="dropdown__menu--item">Valencia</li>
+                        <li class="dropdown__menu--item">Sevilla</li>
+                        <li class="dropdown__menu--item">Zaragoza</li>
+                        <li class="dropdown__menu--item">Málaga</li>
+                        <li class="dropdown__menu--item">Murcia</li>
+                        <li class="dropdown__menu--item">Palma</li>
+                        <li class="dropdown__menu--item">Las Palmas de Gran Canaria</li>
+                        <li class="dropdown__menu--item">Alicante</li>
+                        <li class="dropdown__menu--item">Córdoba</li>
+                        <li class="dropdown__menu--item">Valladolid</li>
+                        <li class="dropdown__menu--item">Vigo</li>
+                        <li class="dropdown__menu--item">Hospitalet de Llobregat</li>
+                        <li class="dropdown__menu--item">Gijón</li>
+                        <li class="dropdown__menu--item">La Coruña</li>
+                        <li class="dropdown__menu--item">Elche</li>
+                        <li class="dropdown__menu--item">Granada</li>
+                        <li class="dropdown__menu--item">Terrassa</li>
+                        <li class="dropdown__menu--item">Badalona</li>
+                        <li class="dropdown__menu--item">Sabadell</li>
+                        <li class="dropdown__menu--item">Oviedo</li>
+                        <li class="dropdown__menu--item">Cartagena</li>
+                        <li class="dropdown__menu--item">Móstoles</li>
+                        <li class="dropdown__menu--item">Jerez de la Frontera</li>
+                        <li class="dropdown__menu--item">Santa Cruz de Tenerife</li>
+                        <li class="dropdown__menu--item">Almería</li>
+                        <li class="dropdown__menu--item">Alcalá de Henares</li>
+                        <li class="dropdown__menu--item">Leganés</li>
+                        <li class="dropdown__menu--item">Fuenlabrada</li>
+                        <li class="dropdown__menu--item">Getafe</li>
+                        <li class="dropdown__menu--item">Castellón de la Plana</li>
+                        <li class="dropdown__menu--item">Burgos</li>
+                        <li class="dropdown__menu--item">Albacete</li>
+                        <li class="dropdown__menu--item">Santander</li>
+                        <li class="dropdown__menu--item">Alcorcón</li>
+                        <li class="dropdown__menu--item">San Cristóbal de La Laguna</li>
+                        <li class="dropdown__menu--item">Marbella</li>
+                        <li class="dropdown__menu--item">Logroño</li>
+                        <li class="dropdown__menu--item">Badajoz</li>
+                        <li class="dropdown__menu--item">Salamanca</li>
+                        <li class="dropdown__menu--item">Lleida</li>
+                        <li class="dropdown__menu--item">Huelva</li>
+                        <li class="dropdown__menu--item">Tarragona</li>
+                        <li class="dropdown__menu--item">Torrejón de Ardoz</li>
+                        <li class="dropdown__menu--item">Dos Hermanas</li>
+                        <li class="dropdown__menu--item">Parla</li>
+                        <li class="dropdown__menu--item">Mataró</li>
+                        <li class="dropdown__menu--item">Algeciras</li>
+                        <li class="dropdown__menu--item">León</li>
+                        <li class="dropdown__menu--item">Alcobendas</li>
+                        <li class="dropdown__menu--item">Santa Coloma de Gramenet</li>
+                        <li class="dropdown__menu--item">Jaén</li>
+                        <li class="dropdown__menu--item">Cádiz</li>
+                        <li class="dropdown__menu--item">Reus</li>
+                        <li class="dropdown__menu--item">Roquetas de Mar</li>
+                        <li class="dropdown__menu--item">Girona</li>
+                        <li class="dropdown__menu--item">Ourense</li>
+                        <li class="dropdown__menu--item">Telde</li>
+                        <li class="dropdown__menu--item">Rivas-Vaciamadrid</li>
+                    </ul>
+                </div>
+                <div class="checkBoxFilters">
+                    <p class="checkBoxFilters--text">Year of construction</p>
+                    <div class="mapCheckBoxes">
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="antes-40" value="first_checkbox" checked/> 
+                            Before 1940
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="40-60" value="first_checkbox" checked/> 
+                            Between 1940 and 1959
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="60-80" value="first_checkbox" checked/> 
+                            Between 1960 and 1979
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="80-00" value="first_checkbox" checked/> 
+                            Between 1980 and 1999
+                        </label>
+                        <label class="mapCheckBoxes--item">
+                            <input type="checkbox" class="desde-2000" value="first_checkbox" checked/> 
+                            After 2000
+                        </label>            
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Si debemos utilizar D3 para la recogida y/o transformación de datos, el uso de escalas de color u otras funciones, utilizar lo siguiente:
+        - <script src="https://d3js.org/d3.v4.min.js"></script> //Utilizamos la versión 4 para dar soporte a IE11. A julio de 2021, d3 va por su séptima versión
+    -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
